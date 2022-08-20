@@ -1,0 +1,22 @@
+.container{
+    min-height:5vh;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+}
+.button p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #041C32;
+}
+p:hover{
+    color: #6E3CBC;
+    transform: 0.5s;
+}
