@@ -1,5 +1,6 @@
 // routes
 import { SearchBox } from './components';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
@@ -7,10 +8,12 @@ import Router from "./routes";
 
 
 
+
 const App = () => {
   library.add(fas,faFontAwesome)
   return (
-    <SearchBox/>
+   
+  <SearchBox/>
   );
 };
 
