@@ -22,12 +22,6 @@ export default function Router() {
     {
       path: "/search",
       element: <SearchAndFooterLayout />,
-      children: [{ path: "result", element: <SearchResults /> }],
-    },
-    {
-      path: "/searchbox",
-      element: <SearchBox />,
-      children: [{ path: "searchbox", element: <SearchBox /> }],
     },
     { path: "*", element: <NotFound /> },
   ]);

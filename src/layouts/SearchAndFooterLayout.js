@@ -1,10 +1,10 @@
 import { SearchBox, Footer } from "../components";
-import { Outlet } from "react-router-dom";
+import SearchResults from "../pages/SearchResults";
 
 const SearchAndFooterLayout = () => (
   <>
     <SearchBox />
-    <Outlet />
+    <SearchResults />
     <Footer />
   </>
 );

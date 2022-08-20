@@ -2,14 +2,8 @@
 :root {
   --brown: #381111;
 }
-.search_main {
-  min-height: 90vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.container {
+
+.search_box {
   margin-top: 70px;
   height: 3rem;
   width: 30rem;
