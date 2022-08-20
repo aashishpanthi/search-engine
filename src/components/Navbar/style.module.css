@@ -14,7 +14,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: #041C32;
+    color: var(--txtblack);
 }
 p:hover{
     color: #6E3CBC;
