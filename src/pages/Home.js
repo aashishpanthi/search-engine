@@ -1,7 +1,8 @@
 import React from "react";
+import { SearchBox } from "../components";
 
 const Home = () => {
-  return <div>Home page</div>;
+  return <SearchBox />;
 };
 
 export default Home;
