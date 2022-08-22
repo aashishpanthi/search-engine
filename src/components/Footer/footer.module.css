@@ -1,7 +1,7 @@
 .footer {
   height: 50px;
   width: 100%;
-  background: #E7F6F2;
+  background: var(--footer);
   display: flex;
   justify-content: center;
   opacity: 0.7;
@@ -11,13 +11,13 @@
   font-size: 1.2rem;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  color: #2C3333;
+  color: var(--grey);
 }
 .thanks a{
   font-family: "Poppins", sans-serif;
   font-weight: 800;
   text-decoration: none;
-  color: #2C3333;  
+  color: var(--grey);  
 }
 .thanks a:hover{
   color: #002B5B;

@@ -6,14 +6,21 @@
   --white: #fff;
   --dark:#2C3333;
   --txtblack:#041C32;
+  --shadow:rgba(0, 0, 0, 0.2);
+  --footer:#E7F6F2;
+  --grey:#2C3333;
+  --hover:rgba(0, 0, 0, 0.09)
 }
 .dark-theme{
-  --bg:black;
+  --bg:#121212;
   --brown: #381111;
   --box: black;
   --white: black;
   --dark:#fff;
   --txtblack:#fff;
+  --footer:#395B64;
+  --grey:rgb(184, 181, 181);
+  --hover:rgba(255, 255, 255, 0.09);
 }
 body {
   background-color: var(--bg);

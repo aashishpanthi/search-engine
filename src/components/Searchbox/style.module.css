@@ -17,6 +17,10 @@
   height: 2.5rem;
   width: 25rem;
   background-color: var(--bg);
+  font-family: "Poppins", sans-serif;
+}
+input{
+  color: var(--txtblack);
 }
 input:focus {
   outline: none !important;
@@ -27,6 +31,7 @@ input::placeholder {
   font-weight: 300;
   color: var(--txtblack);
 }
+
 .search_icon {
   height: 1.5rem;
   color: #fff;
