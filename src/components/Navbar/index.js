@@ -18,7 +18,8 @@ const style = {
   width: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
-  p: 4,
+  px: 3,
+  py: 4,
 };
 const Navbar = () => {
   //mui
@@ -44,7 +45,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <div className={styles.contain}>
         <button className={styles.button} onClick={handleOpen}>
-          <p>Webportal</p>
+          <p>Add your website</p>
         </button>
 
         <button className={styles.buttonn} onClick={() => toggleTheme()}>
@@ -65,31 +66,32 @@ const Navbar = () => {
         >
           <Fade in={open}>
             <Box sx={style}>
-              <Button onClick={() => handleClose()} sx={{ ml: 45 }}>
+              <Button
+                onClick={() => handleClose()}
+                sx={{
+                  display: "block",
+                  marginLeft: "auto",
+                }}
+              >
                 <CloseIcon />
               </Button>
               <Typography
                 id="transition-modal-title"
-                variant="h6"
-                component="h2"
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  cursor: "default",
-                }}
+                variant="h4"
+                component="h1"
+                sx={{ textAlign: "center" }}
               >
-                Webportal
+                Add your website url
               </Typography>
               <Typography
                 id="transition-modal-description"
                 sx={{
                   mt: 2,
-                  display: "flex",
-                  justifyContent: "center",
-                  cursor: "default",
+                  textAlign: "center",
                 }}
               >
-                Let us know about your sites
+                Enter your website url below. It will help us to know about your
+                website and rank it.
               </Typography>
               <TextField
                 required

@@ -6,20 +6,19 @@
   justify-content: center;
   opacity: 0.7;
 }
-.thanks{
-  
+.thanks {
   font-size: 1.2rem;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: var(--grey);
 }
-.thanks a{
+.thanks a {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
   text-decoration: none;
-  color: var(--grey);  
+  color: var(--grey);
 }
-.thanks a:hover{
-  color: #002B5B;
+.thanks a:hover {
+  color: #002b5b;
   transition: 1s;
 }
