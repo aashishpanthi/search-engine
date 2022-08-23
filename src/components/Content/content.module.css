@@ -2,7 +2,6 @@
 .container {
   margin: 15px auto;
   width: 100%;
-  max-width: 1200px;
   background-color: var(--contentbg);
   padding: 0.5rem;
   display: flex;
