@@ -3,11 +3,12 @@
   margin-top: 10px;
   height: 20vh;
   width: 80vw;
-  background-color: #fcf8f8;
+  background-color: var(--contentbg);
   padding: 0.5rem 0.2rem;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 2px 15px 0px rgba(188,111,241,0.3);
+  box-shadow: 0px 2px 15px 0px var(--shadowcontent);
+  border-radius: 5px;
 }
 .data{
     display: flex;
@@ -31,21 +32,26 @@ img {
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
-  color: #892cdc;
+  color: var(--title);
+  cursor: default;
 }
 .link {
-  color: #52057B;
+  color: var(--links);
 }
 .link a {
   text-decoration: none;
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   cursor: pointer; 
+  margin-left: 3px;
+  color: var(--links);
+  cursor: pointer;
 }
 .txt{
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
   font-weight: 300;
+  color: var(--txtblack);
 
 }

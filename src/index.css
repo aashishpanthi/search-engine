@@ -9,7 +9,14 @@
   --shadow:rgba(0, 0, 0, 0.2);
   --footer:#E7F6F2;
   --grey:#2C3333;
-  --hover:rgba(0, 0, 0, 0.09)
+  --hover:rgba(0, 0, 0, 0.09);
+  --active:#6E3CBC;
+  --hoverr:rgba(0, 0, 0, 0.3);
+  --contentbg:#fcf8f8;
+  --title: #892cdc;
+  --links:#52057B;
+  --shadowcontent: rgba(188,111,241,0.3);
+
 }
 .dark-theme{
   --bg:#121212;
@@ -21,6 +28,15 @@
   --footer:#395B64;
   --grey:rgb(184, 181, 181);
   --hover:rgba(255, 255, 255, 0.09);
+  --active:#6E3CBC;
+  --hoverr:rgba(255, 255, 255, 0.3);
+  --contentbg:#121212;
+  --title:#AA14F0;
+  --links: #79018C;
+  --shadowcontent:rgba(0, 0, 0, 0.3);
+}
+.srch{
+  margin: 10vh 10vh 10vh 10vh;
 }
 body {
   background-color: var(--bg);

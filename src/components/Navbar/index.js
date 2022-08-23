@@ -3,6 +3,7 @@ import { useEffect} from "react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from 'react';
+import { makeStyles } from '@mui/styles';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -10,6 +11,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
+import TextField from '@mui/material/TextField';
 
 const style = {
   position: 'absolute',
@@ -54,6 +56,7 @@ const Navbar = () => {
   </button>
     </div>
     <div>
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -67,13 +70,17 @@ const Navbar = () => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Button onClick={()=>handleClose()}><CloseIcon/></Button>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Button onClick={()=>handleClose()} sx={{ml:45}}><CloseIcon/></Button>
+            <Typography id="transition-modal-title" variant="h6" component="h2" sx={{display:'flex', justifyContent: 'center',cursor:'default'}}>
               Webportal
             </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+            <Typography id="transition-modal-description" sx={{ mt: 2,display:'flex', justifyContent: 'center',cursor:'default' }} >
               Let us know about your sites
             </Typography>
+            <TextField required id="outlined-search" label="Enter your Link" sx={{mt:4,display:'flex', justifyContent: 'center'}} />
+            <Button variant="outlined" size="medium" sx={{mt:4,ml:20}}>
+          Submit
+        </Button>
           </Box>
         </Fade>
       </Modal>
