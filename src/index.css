@@ -38,6 +38,12 @@
   width: 100%;
   max-width: 1200px;
   margin: 10px auto;
+  padding: 10px 25px;
+}
+
+.srch #searchBox {
+  max-width: 900px;
+  width: 90%;
 }
 body {
   background-color: var(--bg);
