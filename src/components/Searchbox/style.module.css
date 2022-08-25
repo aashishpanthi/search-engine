@@ -10,7 +10,7 @@
   align-items: center;
   border-radius: 10px;
   padding-left: 1rem;
-  box-shadow: 0px 1px 3px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 5px var(--shadow);
   background-color: var(--bg);
 }
 .search_input {
@@ -46,4 +46,15 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/*media screen*/
+@media (max-width:515px) {
+  .search_box{
+    width: 20rem;
+  }
+}
+@media (max-width:280px) {
+  .search_box{
+    width: 15rem;
+  }
 }

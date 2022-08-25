@@ -16,6 +16,7 @@
   --title: #892cdc;
   --links: #52057b;
   --shadowcontent: rgba(188, 111, 241, 0.3);
+  
 }
 .dark-theme {
   --bg: #121212;
@@ -33,12 +34,18 @@
   --title: #aa14f0;
   --links: #79018c;
   --shadowcontent: rgba(0, 0, 0, 0.3);
+  --shadow: rgba(0, 0, 0, 0.6);
 }
 .srch {
   width: 100%;
   max-width: 1200px;
   margin: 10px auto;
   padding: 10px 25px;
+}
+@media (max-width:1100px){
+  .srch{
+    padding: 0px 0px;
+  }
 }
 
 .srch #searchBox {

@@ -20,7 +20,7 @@ const Content = () => {
       <div className={styles.data}>
         <div className={styles.info}>{result.title}</div>
         <div className={styles.link}>
-          <FontAwesomeIcon icon="fa-solid fa-circle-arrow-right" />
+        <img src={result.favicon} alt="fav"></img>
           <a href={result.link}>{result.link}</a>
         </div>
         <div className={styles.txt}>{result.description}</div>

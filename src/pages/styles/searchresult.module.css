@@ -33,3 +33,21 @@
 .result {
   min-height: 100vh;
 }
+@media (max-width:950px){
+  .container{
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidenav{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    min-height: 10px;
+    border-right: none;
+  }
+  .btn{
+    margin-top: 0px;
+    font-size: 0.9rem;
+  }
+}
