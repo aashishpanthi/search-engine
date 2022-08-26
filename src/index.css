@@ -16,6 +16,7 @@
   --title: #892cdc;
   --links: #52057b;
   --shadowcontent: rgba(188, 111, 241, 0.3);
+  --border:none;
   
 }
 .dark-theme {
@@ -31,10 +32,11 @@
   --active: #6e3cbc;
   --hoverr: rgba(255, 255, 255, 0.3);
   --contentbg: #121212;
-  --title: #aa14f0;
-  --links: #79018c;
+  --title: #d2c8d6;
+  --links: #cecdce;
   --shadowcontent: rgba(0, 0, 0, 0.3);
-  --shadow: rgba(0, 0, 0, 0.6);
+  --shadow: rgba(0, 0, 0, 0.3);
+  --border:0.5px solid rgba(255, 255, 255, 0.08);
 }
 .srch {
   width: 100%;

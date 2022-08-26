@@ -71,16 +71,16 @@
 }
 @media (max-width:950px) {
   .container{
-    height: 20vh;
+    padding: 10px 10px 10px 10px;
   }
   .txt{
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .info{
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
   .link a{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   
   .og {
@@ -96,9 +96,18 @@
 }
 @media (max-width:650px) {
   .container{
-    padding: 0rem;
+    padding: 10px 10px 10px 10px;
   }
   .og{
     display: none;
+  }
+  .txt{
+    font-size: 0.8rem;
+  }
+  .info{
+    font-size: 1.1rem;
+  }
+  .link a{
+    font-size: 0.8rem;
   }
 }
