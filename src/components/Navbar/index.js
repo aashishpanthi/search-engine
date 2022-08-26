@@ -9,13 +9,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
-
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 350,
   bgcolor: "background.paper",
   boxShadow: 24,
   px: 3,
@@ -39,7 +38,14 @@ const Navbar = () => {
     }
   };
   useEffect(() => {
+    const data = localStorage.getItem("theme");
+    if (theme == "light-theme") {
+      setTheme(JSON.parse(data));
+    }
+  }, []);
+  useEffect(() => {
     document.body.className = theme;
+    localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
   return (
     <div className={styles.container}>

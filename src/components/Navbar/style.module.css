@@ -18,7 +18,7 @@
   color: var(--txtblack);
 }
 p:hover {
-  color: #6e3cbc;
+  color: rgb(154, 5, 253);
   transform: 0.5s;
 }
 .buttonn {
