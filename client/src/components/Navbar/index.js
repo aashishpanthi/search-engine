@@ -27,7 +27,7 @@ const Navbar = () => {
   const handleClose = () => setOpen(false);
   //theme
   const [box, setBox] = useState("fa-solid fa-moon");
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState("dark-theme");
   const toggleTheme = () => {
     if (theme === "dark-theme") {
       setTheme("light-theme");
