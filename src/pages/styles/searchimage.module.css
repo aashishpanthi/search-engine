@@ -32,6 +32,53 @@
 }
 .result {
   min-height: 100vh;
+  display: flex;
+  column-gap: 1em;
+}
+.logocontain{
+  height: 11em;
+  width: 11em;
+  background-color: var(--contentbg);
+  box-shadow: 0px 0px 15px 0px var(--shadowcontent);
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: 5px;
+}
+.covercontain{
+  height: 11em;
+  width: 19em;
+  background-color: var(--contentbg);
+  box-shadow: 0px 0px 15px 0px var(--shadowcontent);
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: 5px;
+}
+.logocontain:hover{
+  transition: 0.5s; 
+  box-shadow: var(--imgshadow) 0px 6px 12px -2px, var(--imgshadow1) 0px 3px 7px -3px;
+}
+.covercontain:hover{
+  transition: 0.5s; 
+  box-shadow: var(--imgshadow)0px 6px 12px -2px, var(--imgshadow1) 0px 3px 7px -3px;
+}
+.image{
+  height: 85%;
+  width: 100%;
+}
+.image img{
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.info{
+  font-family: "Poppins", sans-serif;
+  color: var(--txtblack);
+  font-weight: 300;
+  margin-left: 4px;
+ 
 }
 @media (max-width:950px){
   .container{

@@ -17,6 +17,8 @@
   --links: #52057b;
   --shadowcontent: rgba(188, 111, 241, 0.3);
   --border:none;
+  --imgshadow:rgba(50, 50, 93, 0.25);
+  --imgshadow1:rgba(0, 0, 0, 0.3);
   
 }
 .dark-theme {
@@ -37,6 +39,8 @@
   --shadowcontent: rgba(0, 0, 0, 0.3);
   --shadow: rgba(0, 0, 0, 0.3);
   --border:0.5px solid rgba(255, 255, 255, 0.08);
+  --imgshadow:rgba(89, 89, 102, 0.25);
+  --imgshadow1:rgba(175, 172, 172, 0.3);
 }
 .srch {
   width: 100%;
