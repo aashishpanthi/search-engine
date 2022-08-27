@@ -17,7 +17,8 @@ const Images = () => {
             </Link>
             <button className={styles.btn}>Videos</button>
           </div>
-          <div className={styles.result}>Images</div>
+          <div className={styles.result}>
+          </div>
         </div>
       </div>
       <Footer />
