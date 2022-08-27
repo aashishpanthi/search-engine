@@ -39,8 +39,9 @@
   --shadowcontent: rgba(0, 0, 0, 0.3);
   --shadow: rgba(0, 0, 0, 0.3);
   --border:0.5px solid rgba(255, 255, 255, 0.08);
-  --imgshadow:rgba(89, 89, 102, 0.25);
-  --imgshadow1:rgba(175, 172, 172, 0.3);
+  --imgshadow:rgba(7, 7, 7, 0.7);
+  --imgshadow1:rgba(0, 0, 0, 0.9);
+  
 }
 .srch {
   width: 100%;
