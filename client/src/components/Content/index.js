@@ -12,9 +12,17 @@ const Content = ({ result }) => {
         </a>
         <a className={styles.link} href={result.link}>
           <img src={result.favicon} alt="fav"></img>
-          <span>{result.link}</span>
+          <span>
+            {result.link.length > 30
+              ? `${result.link.substring(0, 30)}...`
+              : result.link}
+          </span>
         </a>
-        <div className={styles.txt}>{result.description}</div>
+        <div className={styles.txt}>
+          {result.description.length > 150
+            ? `${result.description.substring(0, 150)}...`
+            : result.description}
+        </div>
       </div>
     </div>
   );
