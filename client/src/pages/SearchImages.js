@@ -21,7 +21,7 @@ const Images = () => {
           <Link to="/search">
             <button className={styles.btn}>All</button>
           </Link>
-          <Link to="/images">
+          <Link to="/search/images">
             <button className={styles.btn}>Images</button>
           </Link>
           {/* <button className={styles.btn}>Videos</button> */}

@@ -1,23 +1,37 @@
 import styles from "./style.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 const SearchBox = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    navigate(`/search?q=${query}`);
+  };
+
   return (
     <div className={styles.search_box} id="searchBox">
-      <input
-        type="text "
-        placeholder="Search anything..."
-        className={styles.search_input}
-      ></input>
+      <form onSubmit={handleSearch} className={styles.search_form}>
+        <input
+          type="text "
+          placeholder="Search anything..."
+          className={styles.search_input}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          autoFocus="true"
+        />
 
-      <div className={styles.icon}>
-        <Link to="/search">
+        <button className={styles.icon} type="submit">
           <FontAwesomeIcon
             icon="fa-solid fa-magnifying-glass"
             className={styles.search_icon}
           />
-        </Link>
-      </div>
+        </button>
+      </form>
     </div>
   );
 };
