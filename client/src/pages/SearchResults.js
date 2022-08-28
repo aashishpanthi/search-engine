@@ -1,9 +1,18 @@
 import styles from "./styles/searchresult.module.css";
 import { Content, Page } from "../components";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const SearchResults = () => {
+  const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
+
+  if (!query) {
+    navigate("/");
+  }
+
   const [theme, setTheme] = useState("light-theme");
 
   const data = [
@@ -72,10 +81,10 @@ const SearchResults = () => {
     <Page title="Search Results">
       <div className={styles.container}>
         <div className={styles.sidenav}>
-          <Link to="/search">
+          <Link to={`/search?q=${query}`}>
             <button className={styles.btn}>All</button>
           </Link>
-          <Link to="/search/images">
+          <Link to={`/search/images?q=${query}`}>
             <button className={styles.btn}>Images</button>
           </Link>
           {/* <button className={styles.btn}>Videos</button> */}

@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SearchBox = () => {
-  const [query, setQuery] = useState("");
+const SearchBox = ({ value = "" }) => {
+  const [query, setQuery] = useState(value);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    navigate(`/search?q=${query}`);
+    if (query.length > 0) {
+      navigate(`/search?q=${query}`);
+    }
   };
 
   return (
