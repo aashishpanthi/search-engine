@@ -8,6 +8,7 @@ import SearchAndFooterLayout from "./layouts/SearchAndFooterLayout";
 import NotFound from "./pages/Page404";
 import Home from "./pages/Home";
 import Images from "./pages/SearchImages";
+import SearchResults from "./pages/SearchResults";
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -20,10 +21,10 @@ export default function Router() {
     {
       path: "/search",
       element: <SearchAndFooterLayout />,
-    },
-    {
-      path: "/images",
-      element: <Images />,
+      children: [
+        { path: "", element: <SearchResults /> },
+        { path: "images", element: <Images /> },
+      ],
     },
     { path: "*", element: <NotFound /> },
   ]);

@@ -1,15 +1,14 @@
+import { Outlet } from "react-router-dom";
 import { SearchBox, Footer } from "../components";
-import SearchResults from "../pages/SearchResults";
 
 const SearchAndFooterLayout = () => (
   <>
-  <div className='srch'>
-    <SearchBox />
-    <SearchResults />
+    <div className="srch">
+      <SearchBox />
+      <Outlet />
     </div>
     <Footer />
-    
-    </>
+  </>
 );
 
 export default SearchAndFooterLayout;

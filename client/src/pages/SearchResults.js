@@ -1,5 +1,5 @@
 import styles from "./styles/searchresult.module.css";
-import { Content } from "../components";
+import { Content, Page } from "../components";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -69,22 +69,24 @@ const SearchResults = () => {
   }, [theme]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.sidenav}>
-        <Link to="/search">
-          <button className={styles.btn}>All</button>
-        </Link>
-        <Link to="/images">
-          <button className={styles.btn}>Images</button>
-        </Link>
-        {/* <button className={styles.btn}>Videos</button> */}
+    <Page title="Search Results">
+      <div className={styles.container}>
+        <div className={styles.sidenav}>
+          <Link to="/search">
+            <button className={styles.btn}>All</button>
+          </Link>
+          <Link to="/search/images">
+            <button className={styles.btn}>Images</button>
+          </Link>
+          {/* <button className={styles.btn}>Videos</button> */}
+        </div>
+        <div className={styles.result}>
+          {data.map((result) => {
+            return <Content key={result.id} result={result} />;
+          })}
+        </div>
       </div>
-      <div className={styles.result}>
-        {data.map((result) => {
-          return <Content key={result.id} result={result} />;
-        })}
-      </div>
-    </div>
+    </Page>
   );
 };
 
