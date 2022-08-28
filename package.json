@@ -1,0 +1,38 @@
+{
+  "name": "search-engine",
+  "version": "1.0.0",
+  "description": "This is a open-source search engine using redis database for its performance boost",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aashishpanthi/search-engine.git"
+  },
+  "keywords": [
+    "\"Aashish",
+    "Panthi\"",
+    "\"Search",
+    "engine\"",
+    "\"Roshan\""
+  ],
+  "author": "Aashish Panthi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aashishpanthi/search-engine/issues"
+  },
+  "homepage": "https://github.com/aashishpanthi/search-engine#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "mongoose": "^6.5.3",
+    "redis-om": "^0.3.6"
+  }
+}

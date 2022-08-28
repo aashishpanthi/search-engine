@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,6 +23,8 @@ const style = {
   py: 4,
 };
 const Navbar = () => {
+  const [url, setUrl] = useState("");
+
   //mui
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -47,6 +51,26 @@ const Navbar = () => {
     document.body.className = theme;
     localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
+
+  const submitLink = async (e) => {
+    e.preventDefault();
+
+    // send a post request to the server using axios with headers
+    try {
+      //save the data
+      const { data } = await axios.post(`/api/link`, {
+        url,
+      });
+
+      alert(`Site added successfully! ${url} has been added to our list.`);
+
+      //clear the input field
+      setUrl("");
+      handleClose();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className={styles.container}>
       <div className={styles.contain}>
@@ -104,8 +128,15 @@ const Navbar = () => {
                 id="outlined-search"
                 label="Enter your Link"
                 sx={{ mt: 4, display: "flex", justifyContent: "center" }}
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
               />
-              <Button variant="outlined" size="medium" sx={{ mt: 4, ml: 20 }}>
+              <Button
+                variant="outlined"
+                size="medium"
+                sx={{ mt: 4, ml: 20 }}
+                onClick={submitLink}
+              >
                 Submit
               </Button>
             </Box>
