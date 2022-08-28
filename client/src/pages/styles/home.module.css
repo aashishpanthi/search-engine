@@ -3,7 +3,23 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  max-height: 300px;
+  margin-bottom: 25px;
+}
+
+@media screen and (max-width: 510px) {
+  .container {
+    padding-top: 5rem;
+  }
+
+  .logo {
+    max-height: 200px;
+    padding-bottom: 3rem;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -1,12 +1,15 @@
 import React from "react";
-import { SearchBox } from "../components";
+import { Page, SearchBox } from "../components";
 import styles from "./styles/home.module.css";
 
 const Home = () => {
   return (
-    <div className={styles.container}>
-      <SearchBox />
-    </div>
+    <Page title="Home">
+      <div className={styles.container}>
+        <img src="/logo512.png" alt="logo" className={styles.logo} />
+        <SearchBox />
+      </div>
+    </Page>
   );
 };
 
