@@ -51,6 +51,7 @@
   border-radius: 5px;
   margin-top: 5px;
   border-radius: 1rem;
+  padding-bottom: 1rem;
 }
 .mediumcontain{
   height: 16.5em;
@@ -61,6 +62,7 @@
   flex-direction: column;
   border: var(--border);
   border-radius: 1rem;
+  padding-bottom: 1rem;
 }
 .covercontain{
   height: 16.5em;
@@ -72,6 +74,7 @@
   border: var(--border);
   border-radius: 5px;
   border-radius: 1rem;
+  padding-bottom: 1rem;
 }
 .logocontain:hover{
   transition: 0.5s; 
@@ -101,7 +104,7 @@
   color: var(--txtblack);
   font-weight: 300;
   margin-left: 4px;
-  opacity: 0.5;
+  opacity: 0.8;
   display: flex;
   flex-direction: column;
  
@@ -113,8 +116,8 @@
   font-weight: 200;
   cursor: pointer;
   margin-left: 3px;
-  color: var(--links);
   cursor: pointer;
+  color: var(--txtblack);
 }
 .wrap{
   background-color: red;
