@@ -37,6 +37,7 @@
   font-weight: 500;
   color: var(--title);
   text-decoration: none;
+  text-transform: capitalize;
 }
 
 .info:hover {
@@ -65,6 +66,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: var(--txtblack);
+  text-transform: capitalize;
 }
 .link img {
   height: 20px;

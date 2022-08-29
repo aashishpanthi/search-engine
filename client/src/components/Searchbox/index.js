@@ -24,7 +24,7 @@ const SearchBox = ({ value = "" }) => {
           className={styles.search_input}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          autoFocus="true"
+          autoFocus={true}
         />
 
         <button className={styles.icon} type="submit">
