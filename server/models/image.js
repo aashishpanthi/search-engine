@@ -1,4 +1,4 @@
-import { Client, Entity, Schema, Repository } from "redis-om";
+import { Client, Entity, Schema } from "redis-om";
 
 const client = new Client();
 
@@ -22,14 +22,14 @@ export const imageSchema = new Schema(
       type: "string",
     },
     siteTitle: {
-      type: "string",
+      type: "text",
       textSearch: true,
     },
     siteURL: {
       type: "string",
     },
     altTag: {
-      type: "string",
+      type: "text",
       textSearch: true,
     },
   },
@@ -38,17 +38,17 @@ export const imageSchema = new Schema(
   }
 );
 
-export const getImages = async (url) => {
+export const searchImage = async (query) => {
   await connectDB();
-
-  const repository = client.fetchRepository(imageSchema);
-
+  const repository = await client.fetchRepository(imageSchema);
   await repository.createIndex();
 
   const images = await repository
     .search()
-    .where("imageUrl")
-    .equals(url)
+    .where("altTag")
+    .matches(query)
+    .or("siteTitle")
+    .matches(query)
     .return.all();
 
   console.log("got images from redis", images);

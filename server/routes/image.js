@@ -1,9 +1,8 @@
 import express from "express";
-// import { getAllImages, getAImage } from "../controllers/image.js";
+import { getImages } from "../controllers/image.js";
 
 const router = express.Router();
 
-// router.route("/").get(getAllImages); //Route for getting all Images
-// router.route("/:name").get(getAImage); // Routing for getting specific Image
+router.route("/:query").get(getImages); //Route for getting all matching images
 
 export default router;
