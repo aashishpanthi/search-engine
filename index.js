@@ -2,7 +2,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./server/config/mongoDb.js";
-import path from "path";
 
 //router imports
 import searchRoutes from "./server/routes/search.js";
@@ -33,9 +32,5 @@ connectDB();
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
+  app.use(express.static("./client/build"));
 }
