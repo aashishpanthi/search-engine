@@ -2,7 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./server/config/mongoDb.js";
-import path from "path";
+import { resolve } from "path";
 
 //router imports
 import searchRoutes from "./server/routes/search.js";
@@ -36,6 +36,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("./client/build"));
 
   app.get("*", (req, res) => {
-    res.sendFile("client/build/index.html");
+    res.sendFile(resolve("client/build/index.html"));
   });
 }
