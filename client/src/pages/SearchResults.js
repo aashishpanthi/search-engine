@@ -1,10 +1,9 @@
 import styles from "./styles/searchresult.module.css";
 import { Content, Page, NoResultFound } from "../components";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { CircularProgress, Snackbar } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
+import { CircularProgress } from "@mui/material";
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -12,14 +11,6 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(false);
 
   const [open, setOpen] = useState(false);
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -54,10 +45,6 @@ const SearchResults = () => {
     document.body.className = theme;
   }, [theme]);
 
-  const Alert = forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-
   return (
     <Page title="Search Results">
       <div className={styles.container}>
@@ -80,23 +67,7 @@ const SearchResults = () => {
           )}
 
           {data.length === 0 && !loading && (
-            <>
-              <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleClose}
-              >
-                <Alert
-                  onClose={handleClose}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  No results found.
-                </Alert>
-              </Snackbar>
-
-              <NoResultFound query={query} />
-            </>
+            <NoResultFound open={open} setOpen={setOpen} query={query} />
           )}
         </div>
       </div>
