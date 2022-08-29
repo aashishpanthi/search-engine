@@ -39,7 +39,7 @@ const SearchResults = () => {
     setTheme(JSON.parse(data));
 
     fetchResult();
-  }, []);
+  }, [query]);
 
   useEffect(() => {
     document.body.className = theme;
