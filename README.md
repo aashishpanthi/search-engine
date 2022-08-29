@@ -15,11 +15,13 @@ Here's a short video that explains the project and how it uses Redis:
 [![Embed your YouTube video](https://i.ytimg.com/vi/vyxdC1qK4NE/maxresdefault.jpg)](https://www.youtube.com/watch?v=vyxdC1qK4NE)
 
 ## How it works
-Firstly of all a bot is used to run through different websites and that bot checks if the url is allowed to crawl or not. If able to crawl, it means it is able to be indexed. So, the bot scrapes the data from that website. Filters the data and stores in a form that it will be easier to search and index the scraped data.
+Firstly of all a bot is used to run through different websites and that bot checks if the url is allowed to crawl or not. If able to crawl, it means it is able to be indexed. So, the bot scrapes the data from that website. Filters the data and stores in a form that it will be easier to search and index the scraped data. I want to attach a little architecture diagram here to clear out the things I said:
+![Juhu architecture](https://user-images.githubusercontent.com/60884239/187257511-a66aa549-1f74-4d56-87fe-8302a618b4ad.png)
+
 
 ### How the data is stored:
 First of all, our server needs to be connected with the redis database. This is a long code but it works :).
-```
+```javascript
 import { Client } from "redis-om";
 
 const client = new Client();
@@ -40,7 +42,7 @@ Yes, I created a function to call it again and again. But if the server is conne
 
 Then I created a Schema to store the data. Yes, the scraped data in a proper structured way. I am using JSON database provided by redis as a primary database here.
 
-```
+```javascript
 class Website extends Entity {}
 
 export const websiteSchema = new Schema(
@@ -108,17 +110,163 @@ export const saveWebsiteData = async (website) => {
 };
 ```
 
+As I have created another database to save images, so there is a seperate schema and nearly the name save method:
+```javascript
+class Image extends Entity {}
+
+export const imageSchema = new Schema(
+  Image,
+  {
+    imageUrl: {
+      type: "string",
+    },
+    siteTitle: {
+      type: "text",
+      textSearch: true,
+    },
+    siteURL: {
+      type: "string",
+    },
+    altTag: {
+      type: "text",
+      textSearch: true,
+    },
+  },
+  {
+    dataStructure: "JSON",
+  }
+);
+```
+
 ### How the data is accessed:
 
-Refer to [this example](https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs#how-the-data-is-accessed) for a more detailed example of what you need for this section.
+The data is accessed using Redis search and I have also used the datatypes in schema that will make me comfortable searching the query and getting the relevant result.
+
+```javascript
+
+export const searchData = async (query) => {
+  await connectDB();
+  const repository = await client.fetchRepository(websiteSchema);
+  await repository.createIndex();
+
+  const sites = await repository
+    .search()
+    .where("title")
+    .matches(query)
+    .or("description")
+    .matches(query)
+    .or("urlKeywords")
+    .contain(query)
+    .or("headings")
+    .contains(query)
+    .or("mainKeywords")
+    .contains(query)
+    .return.all();
+
+  console.log("got website from redis", sites);
+
+  return sites;
+};
+```
+
+I have created a function named as searchData to createIndex and search for the results and if the result is found or if results are found then the function returns it and from another file or another part of the program, I can call this function with a query as an argument and search for the result. I have nested a lot of or statements here because at this moment, I don't have enough data to display so I am in a path `Something is better than nothing`.
+
+And nearly same goes for image searching.
+```javascript
+
+export const searchImage = async (query) => {
+  await connectDB();
+  const repository = await client.fetchRepository(imageSchema);
+  await repository.createIndex();
+
+  const images = await repository
+    .search()
+    .where("altTag")
+    .matches(query)
+    .or("siteTitle")
+    .matches(query)
+    .return.all();
+
+  console.log("got images from redis", images);
+
+  return images;
+};
+```
 
 
 ## How to run it locally?
 
-[Make sure you test this with a fresh clone of your repo, these instructions will be used to judge your app.]
+If you want to use the code or try out the code then I am going to discuss the process in some points here.
+#### 1. Get Node and NPM running
+
+```bash
+node --version && npm --version
+```
+
+Run the above command and if you get an error or don't get anything back. Try setting up nodejs and npm. If you get some numbers back then you are ready to go.
+
+#### 2. Clone the repository
+
+```bash
+git clone https://github.com/aashishpanthi/search-engine
+```
+
+Clone this repository in order to use the code. Remember you must have git installed in your computer before using the above command.
+
+#### 3. Install dependencies
+
+The package.json file is in root directory of the project so you can install the dependencies directly with this command:
+```bash
+npm install
+```
+
+And to install the dependecy of the frontend part, go to client directory and run npm install there. I mean use the following commands:
+```bash
+cd client
+npm install
+```
+
+#### 4. Configure .env file
+The most important files needed for us to run our application is .env file. This file stores the secrets like API token, access token and other informations that we don't want to share with anyone. Let's create a .env file with command:
+
+```bash
+touch .env
+```
+
+You can create and edit files using graphical medium also. And those who are using windows, please use graphical way or swicth to linux.
+
+Now paste these variables inside of the .env file.
+
+```
+MONGO_URI = 
+REDIS_IMAGE_URL = 
+REDIS_WEBSITE_URL = 
+PORT = 5000
+NODE_ENV = development
+```
+
+May be you have already guessed what each variable is for but anyways, I will tell you one by one. **MONGO_URI** contains the configured url to the mongodb database. **REDIS_IMAGE_URL** and **REDIS_WEBSITE_URL** contain the configured url for the redis databases. I have used two seperate databases for the website data and the images. **PORT** is used to define the port where our server will listen to. And **NODE_ENV** contains the environment on which we are working on, that is either `development` or `production`.
+
+#### 5. Run client and server
+Open two seperate terminal. Open the react server on one terminal as:
+```
+cd client
+npm start
+```
+
+And open the express server on another terminal as:
+```bash
+node index.js
+```
+
+or with mongoose as
+```bash
+npm run devStart
+```
 
 ### Prerequisites
 Node version of minimum 16.x is needed. The app is developed on Node v16.14.2
+
 NPM version of minimum 8.x is needed. The app is developed on NPM v8.5.0.
 
 ### Local installation
