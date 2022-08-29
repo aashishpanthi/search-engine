@@ -1,4 +1,4 @@
-import { Client, Entity, Schema, Repository } from "redis-om";
+import { Client, Entity, Schema } from "redis-om";
 
 const client = new Client();
 
@@ -55,20 +55,36 @@ export const websiteSchema = new Schema(
       type: "string[]",
       textSearch: true,
     },
+    favicon: {
+      type: "string",
+    },
+    ogImage: {
+      type: "string",
+    },
   },
   {
     dataStructure: "JSON",
   }
 );
 
-export const getWebsiteData = async (url) => {
+export const searchData = async (query) => {
   await connectDB();
-
   const repository = await client.fetchRepository(websiteSchema);
-
   await repository.createIndex();
 
-  const sites = await repository.search().where("url").equals(url).return.all();
+  const sites = await repository
+    .search()
+    .where("title")
+    .matches(query)
+    .or("description")
+    .matches(query)
+    .or("urlKeywords")
+    .contain(query)
+    .or("headings")
+    .contains(query)
+    .or("mainKeywords")
+    .contains(query)
+    .return.all();
 
   console.log("got website from redis", sites);
 
