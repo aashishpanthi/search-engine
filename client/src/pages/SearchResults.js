@@ -14,7 +14,6 @@ const SearchResults = () => {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
-
   if (!query) {
     navigate("/");
   }
@@ -34,13 +33,10 @@ const SearchResults = () => {
 
   const [theme, setTheme] = useState("dark-theme");
   useEffect(() => {
-    document.body.className = theme;
     localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
 
   useEffect(() => {
-    const data = localStorage.getItem("theme");
-    setTheme(JSON.parse(data));
     fetchResult();
   }, [query]);
   useEffect(() => {
