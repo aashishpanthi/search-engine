@@ -269,10 +269,6 @@ Node version of minimum 16.x is needed. The app is developed on Node v16.14.2
 
 NPM version of minimum 8.x is needed. The app is developed on NPM v8.5.0.
 
-### Local installation
-
-[Insert instructions for local installation]
-
 ## Deployment
 
 First of all I created an account on redis cloud and used the cloud database. You can also create free account on [Redis Cloud](https://redis.info/try-free-dev-to)
@@ -297,6 +293,31 @@ Here some resources to help you quickly get started using Redis Stack. If you st
     - [Redis OM Spring (Java)](https://github.com/redis/redis-om-spring)
 
 I have used Redis OM Node (JS) to make this search engine.
+
+## Marketplace.json
+```
+{
+    "description": "An open source search engine in NodeJS",
+    "hidden": false,
+    "rank": 21,
+    "type": "Building Block", 
+    "contributed_by": "Redis Labs", 
+    "repo_url": "https://github.com/aashishpanthi/search-engine", 
+    "download_url": "https://github.com/aashishpanthi/search-engine/archive/refs/heads/main.zip",
+    "hosted_url": "http://143.198.136.81:5000/", 
+    "language": ["JavaScript"], 
+    "redis_features": ["search","database"],
+    "redis_modules": ["RediJSON","RediSearch"],
+    "app_image_urls": [
+        "https://user-images.githubusercontent.com/60884239/187238474-58389c1e-0a40-44ef-a9c6-cc973298f4cc.png",
+        "https://user-images.githubusercontent.com/60884239/187239207-8bf91d3f-97f7-4720-822f-14178c69ed44.png"
+    ], 
+    "youtube_url": "",
+    "special_tags": ["Hackathon"], 
+    "verticals": ["Technology", "Education"], 
+    "markdown": "https://raw.githubusercontent.com/aashishpanthi/search-engine/main/README.md" 
+}
+```
 
 1. [Developer Hub](https://redis.info/devhub) - The main developer page for Redis, where you can find information on building using Redis with sample projects, guides, and tutorials.
 1. [Redis Stack getting started page](https://redis.io/docs/stack/) - Lists all the Redis Stack features. From there you can find relevant docs and tutorials for all the capabilities of Redis Stack.
