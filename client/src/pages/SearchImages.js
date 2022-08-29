@@ -1,10 +1,16 @@
 import styles from "./styles/searchimage.module.css";
+import { Image, Page, NoResultFound } from "../components";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
-import { Page } from "../components";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 const Images = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -13,10 +19,26 @@ const Images = () => {
     navigate("/");
   }
 
+  const fetchResult = async () => {
+    setLoading(true);
+
+    // get using axios
+    const { data } = await axios.get(`/api/images/${query}`);
+    setLoading(false);
+    if (data.length === 0) {
+      setOpen(true);
+    } else {
+      setData(data);
+    }
+  };
+
   const [theme, setTheme] = useState("light-theme");
+
   useEffect(() => {
     const data = localStorage.getItem("theme");
     setTheme(JSON.parse(data));
+
+    fetchResult();
   }, []);
 
   useEffect(() => {
@@ -36,104 +58,17 @@ const Images = () => {
           {/* <button className={styles.btn}>Videos</button> */}
         </div>
         <div className={styles.result}>
-          <div className={styles.logocontain}>
-            <div className={styles.image}>
-              <img
-                src="https://res.cloudinary.com/practicaldev/image/fetch/s--nlsMuist--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/515453/9685da9d-4c14-4944-822d-6e3bc7ea969d.jpg"
-                alt="logo"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.covercontain}>
-            <div className={styles.image}>
-              <img
-                src="https://keep-calm.net/images/keep-calm-and-digest-the-sample-1200-630-black-orange.jpg"
-                alt="cover"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.mediumcontain}>
-            <div className={styles.image}>
-              <img
-                src="https://keep-calm.net/images/keep-calm-and-digest-the-sample-1200-630-black-orange.jpg"
-                alt="cover"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.logocontain}>
-            <div className={styles.image}>
-              <img
-                src="https://res.cloudinary.com/practicaldev/image/fetch/s--nlsMuist--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/515453/9685da9d-4c14-4944-822d-6e3bc7ea969d.jpg"
-                alt="logo"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.logocontain}>
-            <div className={styles.image}>
-              <img
-                src="https://res.cloudinary.com/practicaldev/image/fetch/s--nlsMuist--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/515453/9685da9d-4c14-4944-822d-6e3bc7ea969d.jpg"
-                alt="logo"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.logocontain}>
-            <div className={styles.image}>
-              <img
-                src="https://res.cloudinary.com/practicaldev/image/fetch/s--nlsMuist--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/515453/9685da9d-4c14-4944-822d-6e3bc7ea969d.jpg"
-                alt="logo"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
-          <div className={styles.logocontain}>
-            <div className={styles.image}>
-              <img
-                src="https://res.cloudinary.com/practicaldev/image/fetch/s--nlsMuist--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/515453/9685da9d-4c14-4944-822d-6e3bc7ea969d.jpg"
-                alt="logo"
-              ></img>
-            </div>
-            <div className={styles.info}>
-              Aashish Panthi
-              <a href="https://aashishpanthi.info.np">
-                https://aashishpanthi.info.np
-              </a>
-            </div>
-          </div>
+          {loading ? (
+            <CircularProgress className={styles.loader} />
+          ) : (
+            data.map((result) => (
+              <Image key={result.entityId} result={result} />
+            ))
+          )}
+
+          {data.length === 0 && !loading && (
+            <NoResultFound open={open} setOpen={setOpen} query={query} />
+          )}
         </div>
       </div>
     </Page>

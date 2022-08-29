@@ -4,3 +4,4 @@ export { default as Navbar } from "./Navbar";
 export { default as SearchBox } from "./Searchbox";
 export { default as Content } from "./Content";
 export { default as NoResultFound } from "./NoResultFound";
+export { default as Image } from "./Image";

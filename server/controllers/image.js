@@ -10,6 +10,18 @@ export const getImages = async (req, res) => {
 
   try {
     let images = await searchImage(value);
+
+    if (images.length !== 0) {
+      // remove the dulicate images with same url
+      images = images = images.filter(
+        (image, index, self) =>
+          index === self.findIndex((t) => t.imageUrl === image.imageUrl)
+      );
+
+      // get only the images that contain https protocol
+      images = images.filter((image) => image.imageUrl.includes("https"));
+    }
+
     res.status(200).json(images);
   } catch (err) {
     console.error(err.message);
