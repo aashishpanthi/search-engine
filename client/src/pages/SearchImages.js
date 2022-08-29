@@ -32,12 +32,11 @@ const Images = () => {
     }
   };
 
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState("dark-theme");
 
   useEffect(() => {
     const data = localStorage.getItem("theme");
     setTheme(JSON.parse(data));
-
     fetchResult();
   }, []);
 
