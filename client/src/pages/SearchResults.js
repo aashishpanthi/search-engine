@@ -14,6 +14,16 @@ const SearchResults = () => {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
+  const [theme, setTheme] = useState("dark-theme");
+  useEffect(() => {
+    document.body.className = theme;
+    const data = localStorage.getItem("theme");
+    setTheme(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   if (!query) {
     navigate("/");
   }
@@ -30,24 +40,9 @@ const SearchResults = () => {
       setData(data);
     }
   };
-
-  const [theme, setTheme] = useState("dark-theme");
-  useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(theme));
-  }, [theme]);
-
   useEffect(() => {
     fetchResult();
   }, [query]);
-  useEffect(() => {
-    const data = localStorage.getItem("theme");
-    setTheme(JSON.parse(data));
-  }, []);
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-
   return (
     <Page title="Search Results">
       <div className={styles.container}>
