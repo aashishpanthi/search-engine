@@ -9,11 +9,11 @@
   align-items: center;
   box-shadow: 0px 0px 15px 0px var(--shadowcontent);
   border-radius: 5px;
+  word-wrap: break-word;
 }
 
 .data {
   width: 100%;
-  margin-left: 25px;
   font-family: "Poppins", sans-serif;
   font-weight: 200;
 }
@@ -24,6 +24,7 @@
 
 .og {
   height: 90%;
+  margin-right: 25px;
   max-width: 150px;
 }
 
@@ -76,7 +77,7 @@
 /*responsive*/
 @media (max-width: 1200px) {
   .container {
-    width: 90%;
+    width: 80%;
   }
 }
 @media (max-width: 950px) {
