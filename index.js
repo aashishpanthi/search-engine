@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./server/config/mongoDb.js";
+import path from "path";
 
 //router imports
 import searchRoutes from "./server/routes/search.js";
