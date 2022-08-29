@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,700;1,300&display=swap");
 .container {
   margin: 15px auto;
+  margin-bottom: 25px;
   width: 100%;
   background-color: var(--contentbg);
   padding: 0.5rem;

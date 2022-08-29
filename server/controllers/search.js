@@ -9,7 +9,21 @@ export const getSites = async (req, res) => {
   if (error) return res.status(400).json({ error: error.details, value });
 
   try {
-    const sites = await searchData(value);
+    let sites = await searchData(value);
+    if (sites.length !== 0) {
+      // sort the sites array with the most backlinks first
+      sites = sites
+        .sort((a, b) => {
+          return b.backLinks - a.backLinks;
+        })
+        .slice(0, 25);
+
+      // sort the sites array with the least loadTime first
+      sites = sites.sort((a, b) => {
+        return a.loadTime - b.loadTime;
+      });
+    }
+
     res.status(200).json(sites);
   } catch (err) {
     console.error(err.message);
