@@ -32,21 +32,17 @@ const Images = () => {
     }
   };
 
-  const [theme, setTheme] = useState("dark-theme");
-  useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem("theme", JSON.stringify(theme));
-  }, [theme]);
+  const [theme, setTheme] = useState("light-theme");
 
   useEffect(() => {
     const data = localStorage.getItem("theme");
-    setTheme(JSON.parse(data));
-    fetchResult();
-  }, []);
 
-  useEffect(() => {
+    if (!data) {
+      setTheme(JSON.parse(data));
+    }
+    fetchResult();
     document.body.className = theme;
-  }, [theme]);
+  }, []);
 
   return (
     <Page title="Images">

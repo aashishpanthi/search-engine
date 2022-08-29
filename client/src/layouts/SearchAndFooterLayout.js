@@ -15,12 +15,12 @@ const SearchAndFooterLayout = () => {
     <>
       <div className="srch">
         <div className="nav_with_search">
-          <Link to="/" class="img_link">
+          <Link to="/" className="img_link">
             <img src="/logo192.png" />
           </Link>
           <SearchBox value={query} />
         </div>
-        <Outlet value={query} />
+        <Outlet />
       </div>
       <Footer />
     </>

@@ -31,26 +31,19 @@ const Navbar = () => {
   const handleClose = () => setOpen(false);
   //theme
   const [box, setBox] = useState("fa-solid fa-moon");
-  const [theme, setTheme] = useState("dark-theme");
+  const [theme, setTheme] = useState("light-theme");
+
   const toggleTheme = () => {
     if (theme === "dark-theme") {
       setTheme("light-theme");
       setBox("fa-solid fa-moon");
+      document.body.className = "light-theme";
     } else {
       setTheme("dark-theme");
       setBox("fa-solid fa-sun");
+      document.body.className = "dark-theme";
     }
   };
-  useEffect(() => {
-    const data = localStorage.getItem("theme");
-    if (theme == "light-theme") {
-      setTheme(JSON.parse(data));
-    }
-  }, []);
-  useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem("theme", JSON.stringify(theme));
-  }, [theme]);
 
   const submitLink = async (e) => {
     e.preventDefault();
