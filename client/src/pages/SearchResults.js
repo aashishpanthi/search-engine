@@ -3,10 +3,12 @@ import { Content, Page } from "../components";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 const SearchResults = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -16,8 +18,11 @@ const SearchResults = () => {
   }
 
   const fetchResult = async () => {
+    setLoading(true);
+
     // get using axios
     const { data } = await axios.get(`/api/search/${query}`);
+    setLoading(false);
     setData(data);
   };
 
@@ -47,9 +52,13 @@ const SearchResults = () => {
           {/* <button className={styles.btn}>Videos</button> */}
         </div>
         <div className={styles.result}>
-          {data.map((result) => {
-            return <Content key={result.entityId} result={result} />;
-          })}
+          {loading ? (
+            <CircularProgress className={styles.loader} />
+          ) : (
+            data.map((result) => (
+              <Content key={result.entityId} result={result} />
+            ))
+          )}
         </div>
       </div>
     </Page>

@@ -31,22 +31,31 @@
   color: var(--active);
 }
 .result {
-  min-height: 100vh;
+  min-height: 90vh;
 }
-@media (max-width:950px){
-  .container{
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@media (max-width: 950px) {
+  .container {
     margin-top: 1vh;
     display: flex;
     flex-direction: column;
   }
-  .sidenav{
+  .sidenav {
     display: flex;
     flex-direction: row;
     margin-left: 5%;
     min-height: 10px;
     border-right: none;
   }
-  .btn{
+  .btn {
     margin-top: 0px;
     font-size: 0.9rem;
   }
