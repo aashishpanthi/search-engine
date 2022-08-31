@@ -12,7 +12,7 @@ Juhu is an open source search engine that doesn't track users and id fully custo
 
 Here's a short video that explains the project and how it uses Redis:
 
-[![Embed your YouTube video](https://i.ytimg.com/vi/vyxdC1qK4NE/maxresdefault.jpg)](https://www.youtube.com/watch?v=vyxdC1qK4NE)
+[My submission video](https://www.youtube.com/watch?v=a2KDXRHfrqA)
 
 ## How it works
 Firstly of all a bot is used to run through different websites and that bot checks if the url is allowed to crawl or not. If able to crawl, it means it is able to be indexed. So, the bot scrapes the data from that website. Filters the data and stores in a form that it will be easier to search and index the scraped data. I want to attach a little architecture diagram here to clear out the things I said:
@@ -312,7 +312,7 @@ I have used Redis OM Node (JS) to make this search engine.
         "https://user-images.githubusercontent.com/60884239/187238474-58389c1e-0a40-44ef-a9c6-cc973298f4cc.png",
         "https://user-images.githubusercontent.com/60884239/187239207-8bf91d3f-97f7-4720-822f-14178c69ed44.png"
     ], 
-    "youtube_url": "",
+    "youtube_url": "https://www.youtube.com/watch?v=a2KDXRHfrqA",
     "special_tags": ["Hackathon"], 
     "verticals": ["Technology", "Education"], 
     "markdown": "https://raw.githubusercontent.com/aashishpanthi/search-engine/main/README.md" 
